@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Random Word Gennnnny</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'randoword/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+    </head>
+    <body>
+
+        <h1>Random Word Genny</h1>
+        <h2>{{ request.session.string14 }}</h2>
+        <h2>{{ request.session.count }}</h2>
+
+
+        <form action="/random_word/makeword/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Generate">
+        </form>
+
+        <!-- Decided to add a reset button too so you don't have to just use URL to reset and del session key -->
+        <form action="/random_word/reset/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Reset">
+        </form>
+
+
+    
+    </body>
+</html>

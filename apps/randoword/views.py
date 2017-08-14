@@ -11,7 +11,11 @@ def makenewword(request):
     if request.method == "POST":
         print "post it is"
         request.session['string14'] = get_random_string(length=14)
-        request.session['count'] += 1
+
+        if 'count' in request.session:
+            request.session['count'] += 1
+        else:
+            request.session['count'] = 1
         print request.session['string14']
         return redirect('/')
 
